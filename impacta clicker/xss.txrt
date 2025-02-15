@@ -1,0 +1,21 @@
+import java.util.List;
+import java.util.Random;
+import java.util.ArrayList;
+
+public class Xisde{
+public static void main(String [] args){
+    ArrayList<String> palavras = new ArrayList<String>();
+    palavras.add("caio polonio");
+    palavras.add("guilherme impacta");
+    palavras.add("emergurmero");
+    palavras.add("estrupicio");
+    palavras.add("charlatão");
+    palavras.add("candy box goty");
+    palavras.add("eu s2 frank ocean");
+    palavras.add("igor");
+    Random rndm = new Random();
+    String palavraAleatoria = palavras.get(rndm.nextInt(palavras.size()));
+
+}
+}
+
