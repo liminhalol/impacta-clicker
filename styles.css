@@ -1,3 +1,18 @@
+/* /|========[FONTS]========\ */
+@font-face {
+  font-family: "retro gaming";
+  src: url(fonts/retro_gaming.ttf);
+}
+@font-face {
+  font-family: "yoster";
+  src: url(fonts/yoster.ttf);
+}
+@font-face {
+  font-family: "DPComic";
+  src: url(fonts/dpcomic.ttf);
+}
+
+/* /|========[RESET]========|\ */
 * {
   margin: 0;
   padding: 0;
@@ -5,63 +20,129 @@
 }
 
 body {
+  height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  font-family: "DPComic", sans-serif;
+}
+
+/* /|========[REUSABLE]========|\ */
+.btn {
+  display: inline-block;
+  cursor: pointer;
+  font-family: inherit;
+  border: none;
+  transition: all 0.3s;
+}
+
+.btn--big {
+  font-size: 22px;
+  padding: 8px 16px;
+}
+
+/* /|========[START SCREEN]========|\ */
+.start-screen {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  font-family: "comic-sans", sans-serif;
+  font-size: 12px;
+  background-color: #fff;
 }
 
+.startGameBtn {
+  background-color: black;
+  color: #fff;
+}
+.startGameBtn:hover {
+  background-color: rgb(41, 41, 41);
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* /|========[GAME CONTAINER]========|\ */
 .game {
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 100px;
 }
 
-.inimigo {
-  height: 400px;
-  width: 400px;
-  background-color: red;
-  margin-bottom: 12px;
-}
-
+/* /|========[TITLE]========|\ */
 .heading {
-  margin-bottom: 24px;
+  font-size: 10px;
+  margin-bottom: 36px;
 }
+
+/* /|========[ENEMY INFO]========|\ */
 .name {
+  font-size: 32px;
   font-size: italic;
-  font-size: 22px;
-  margin-bottom: 4px;
-}
-.health {
-  margin-bottom: 4px;
-  font-style: italic;
-}
-
-.attackBtn {
-  border: 0;
-  padding: 8px 16px;
-  background-color: rgba(0, 0, 0, 0.95);
-  color: #fff;
-  cursor: pointer;
-  border: 1px solid #ffffff00;
-}
-
-.attackBtn:hover {
-  border: 1px solid red;
+  margin-bottom: 2px;
 }
 
 .description {
-  margin-bottom: 12px;
+  font-size: 20px;
   color: rgb(70, 70, 70);
+  margin-bottom: 26px;
+}
+
+.health {
+  font-size: 22px;
+  font-style: italic;
+  color: #b30000;
+  margin-bottom: 4px;
+}
+
+/* /|========[ENEMY AREA]========|\ */
+.inimigo {
+  height: 400px;
+  width: 400px;
+  margin-bottom: 24px;
 }
 
 .dialogue {
   position: absolute;
   right: -100px;
   width: 100px;
+  font-size: 22px;
   text-align: right;
+}
+
+/* /|========[ATTACK BUTTON]========|\ */
+.attackBtn {
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.95);
+  margin-bottom: 12px;
+}
+
+.attackBtn:hover {
+  transform: scale(0.95);
+}
+
+.attackBtn:active {
+  transform: scale(1.4);
+}
+
+/* /|========[CHANGE THEME BUTTON]========|\ */
+.changeThemeBtn {
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  font-size: 18px;
+  padding: 3px 6px;
 }
