@@ -26,7 +26,7 @@ function gerarInimigo() {
 }
 
 let numeroFalaAtual;
-attackButton.addEventListener("click", function (e) {
+inimigoImage.addEventListener("click", function (e) {
   console.log(inimigoAtual.ouro);
   // |/=====[GERAR FALA]=====\|
   let numeroFala = Math.trunc(Math.random() * inimigoAtual.falas.length);

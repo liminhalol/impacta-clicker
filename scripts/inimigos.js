@@ -66,4 +66,32 @@ const inimigos = [
     // |/====[OURO]====\|
     10
   ),
+  new Inimigo(
+    // |/====[NOME]====\|
+    "pexe",
+    // |/====[VIDA]====\|
+    50,
+    // |/====[DESCRIÇÃO]====\|
+    "guigao conseguiu um meca, e agora????",
+    // |/====[FALAS]====\|
+    ["chama!", "so pra rir", "essa e boa 😜", "bo joga baldurs gate mano"],
+    // |/====[IMAGEM]====\|
+    "imagens/pexe.png",
+    // |/====[OURO]====\|
+    10
+  ),
+  new Inimigo(
+    // |/====[NOME]====\|
+    "luiz",
+    // |/====[VIDA]====\|
+    50,
+    // |/====[DESCRIÇÃO]====\|
+    "guigao conseguiu um meca, e agora????",
+    // |/====[FALAS]====\|
+    ["chama!", "so pra rir", "essa e boa 😜", "bo joga baldurs gate mano"],
+    // |/====[IMAGEM]====\|
+    "imagens/luiz.png",
+    // |/====[OURO]====\|
+    10
+  ),
 ];
