@@ -73,9 +73,19 @@ inimigoImage.addEventListener("click", function (e) {
 
     // |/====[CHAMA EXPLOSAO]=====\/
     explosao.classList = "explosao explodindo";
+
+    // chama sangue pro peixe
+    if (inimigoAtual.nome == "pexe") {
+      explosao.src = "./imagens/bloodsplatter.gif"
+    }
     setTimeout(
       () => {
         explosao.classList = "explosao parada";
+
+        // volta a normalidade se for peixe
+        if (inimigoAtual.nome == "pexe") {
+          explosao.src = "./imagens/explosao.gif"
+        }
         gerarInimigo();
       },
       1000
