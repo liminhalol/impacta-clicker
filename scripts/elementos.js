@@ -1,11 +1,12 @@
 // |/====[ENEMY INFO]====\|
 const nameText = document.querySelector(".name");
 const healthText = document.querySelector(".health");
-const descriptionText = document.querySelector(".description");
+const descriptionText = document.querySelector(".about");
 
 // |/====[ENEMY AREA]====\|
 const inimigoImage = document.querySelector(".inimigo");
 const dialogueText = document.querySelector(".dialogue");
+const explosao = document.getElementById("explosao")
 
 // |/====[BUTTONS]====\|
 const attackButton = document.querySelector(".attackBtn");
