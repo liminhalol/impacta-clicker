@@ -5,6 +5,7 @@ const player = {
 
 let inimigoAtual;
 let numeroInimigoAtual = 0;
+let explosao = document.getElementById("explosao")
 
 function gerarInimigo() {
   // |/=====[NÃO REPETIR INIMIGOS]=====\|
@@ -42,11 +43,20 @@ inimigoImage.addEventListener("click", function (e) {
 
   // |/=====[MATAR INIMIGO]=====\|
   if (inimigoAtual.vidaAtual <= 0) {
+
+    // |/====[CHAMA EXPLOSAO]=====\/
+    explosao.classList = "explosao explodindo";
+    setTimeout(
+      () => {
+        explosao.classList = "explosao parada";
+        gerarInimigo();
+      },
+      2000
+    );
     // |/=====[GANHAR COISINHAS]=====\|]
     player.gold += inimigoAtual.gold;
     goldText.textContent = player.gold;
 
-    gerarInimigo();
   }
 });
 

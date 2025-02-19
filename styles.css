@@ -109,11 +109,29 @@ body {
 }
 
 /* /|========[ENEMY AREA]========|\ */
-.inimigo {
+.inimigo, .explosao {
   height: 400px;
   width: 400px;
   margin-bottom: 24px;
   transition: transform 0.3s;
+}
+
+.inimigo {
+  z-index: 20;
+}
+
+.explosao.explodindo {
+  display: block;
+  z-index: 99;
+}
+
+.explosao.parada {
+  display: none;
+  z-index: -1;
+}
+
+.explosao {
+  position: absolute;
 }
 
 .inimigo:active{
