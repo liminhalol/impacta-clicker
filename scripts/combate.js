@@ -42,9 +42,31 @@ inimigoImage.addEventListener("click", function (e) {
   if (inimigoAtual.vidaAtual-player.dano >= 0) {
     inimigoAtual.vidaAtual -= player.dano;
   } else {
-    inimigoAtual.vidaAtual = 0
+    inimigoAtual.vidaAtual = 0;
   }
   healthText.textContent = `${inimigoAtual.vidaAtual}/${inimigoAtual.vida}`;
+
+  // |/=====[ ANIMACAO ATAQUE ]=====\|
+  const slash = document.createElement("div");
+  if (inimigoAtual.nome === "pexe") {
+    slash.classList.add("blood-slash");
+  } else {
+    slash.classList.add("normal-slash");
+  }
+
+  Object.assign(slash.style, {
+    top: e.pageY-100 + 'px',
+    left: e.pageX-100 + 'px'
+  });
+
+  document.body.appendChild(slash);
+
+  setTimeout(
+    () => {
+      document.body.removeChild(slash);
+    },
+    500
+  )
 
   // |/=====[MATAR INIMIGO]=====\|
   if (inimigoAtual.vidaAtual <= 0) {
