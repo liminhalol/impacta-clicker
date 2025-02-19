@@ -89,13 +89,17 @@ body {
 }
 
 /* /|========[ENEMY INFO]========|\ */
+.enemy-description {
+  text-align: center;
+}
+
 .name {
   font-size: 32px;
   font-size: italic;
   margin-bottom: 2px;
 }
 
-.description {
+.about {
   font-size: 20px;
   color: rgb(70, 70, 70);
   margin-bottom: 26px;
@@ -109,15 +113,22 @@ body {
 }
 
 /* /|========[ENEMY AREA]========|\ */
-.inimigo, .explosao {
+.main-image {
   height: 400px;
   width: 400px;
   margin-bottom: 24px;
-  transition: transform 0.3s;
 }
 
 .inimigo {
+  position: absolute;
+  width: 400px;
   z-index: 20;
+  transition: transform 0.3s;
+}
+
+.explosao {
+  position: absolute;
+  width: 400px;
 }
 
 .explosao.explodindo {
@@ -128,10 +139,6 @@ body {
 .explosao.parada {
   display: none;
   z-index: -1;
-}
-
-.explosao {
-  position: absolute;
 }
 
 .inimigo:active{
