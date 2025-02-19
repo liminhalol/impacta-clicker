@@ -56,7 +56,7 @@ inimigoImage.addEventListener("click", function (e) {
         explosao.classList = "explosao parada";
         gerarInimigo();
       },
-      2000
+      1000
     );
     // |/=====[GANHAR COISINHAS]=====\|]
     player.gold += inimigoAtual.gold;
