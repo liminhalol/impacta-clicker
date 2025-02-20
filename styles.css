@@ -89,13 +89,17 @@ body {
 }
 
 /* /|========[ENEMY INFO]========|\ */
+.enemy-description {
+  text-align: center;
+}
+
 .name {
   font-size: 32px;
   font-size: italic;
   margin-bottom: 2px;
 }
 
-.description {
+.about {
   font-size: 20px;
   color: rgb(70, 70, 70);
   margin-bottom: 26px;
@@ -109,15 +113,25 @@ body {
 }
 
 /* /|========[ENEMY AREA]========|\ */
-.inimigo, .explosao {
+.main-image {
   height: 400px;
   width: 400px;
   margin-bottom: 24px;
-  transition: transform 0.3s;
+  user-select: none;
+}
+
+.main-image img {
+  position: absolute;
+  width: 400px;
 }
 
 .inimigo {
   z-index: 20;
+  transition: transform 0.3s;
+}
+
+.inimigo:active{
+  transform: scale(1.1);
 }
 
 .explosao.explodindo {
@@ -130,14 +144,6 @@ body {
   z-index: -1;
 }
 
-.explosao {
-  position: absolute;
-}
-
-.inimigo:active{
-  transform: scale(1.1);
-}
-
 .dialogue {
   position: absolute;
   right: -100px;
@@ -145,6 +151,28 @@ body {
   font-size: 22px;
   text-align: right;
 }
+
+/* /|========[SLASH ANIMATIONS]========|\ */
+.blood-slash {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background-image: url("./imagens/blood-slash.gif");
+  background-size: cover;
+  pointer-events: none;
+  z-index: 999;
+}
+
+.normal-slash {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background-image: url("./imagens/normal-slash.gif");
+  background-size: cover;
+  pointer-events: none;
+  z-index: 999;
+}
+
 
 /* /|========[ATTACK BUTTON]========|\ */
 .attackBtn {

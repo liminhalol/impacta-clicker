@@ -30,7 +30,7 @@ const inimigos = [
       "isso é um teste",
     ],
     // |/====[IMAGEM]====\|
-    "imagens/joao.png",
+    "./imagens/joao.png",
     // |/====[OURO]====\|
     10
   ),
@@ -48,7 +48,7 @@ const inimigos = [
       "vc ja assistiu bocchi the rock??!!?!?",
     ],
     // |/====[IMAGEM]====\|
-    "imagens/caio.png",
+    "./imagens/caio.png",
     // |/====[OURO]====\|
     10
   ),
@@ -62,7 +62,7 @@ const inimigos = [
     // |/====[FALAS]====\|
     ["chama!", "so pra rir", "essa e boa 😜", "bo joga baldurs gate mano"],
     // |/====[IMAGEM]====\|
-    "imagens/guigas.png",
+    "./imagens/guigas.png",
     // |/====[OURO]====\|
     10
   ),
@@ -76,7 +76,7 @@ const inimigos = [
     // |/====[FALAS]====\|
     ["chama!", "so pra rir", "essa e boa 😜", "bo joga baldurs gate mano"],
     // |/====[IMAGEM]====\|
-    "imagens/pexe.png",
+    "./imagens/pexe.png",
     // |/====[OURO]====\|
     10
   ),
@@ -90,7 +90,7 @@ const inimigos = [
     // |/====[FALAS]====\|
     ["chama!", "so pra rir", "essa e boa 😜", "bo joga baldurs gate mano"],
     // |/====[IMAGEM]====\|
-    "imagens/luiz.png",
+    "./imagens/luiz.png",
     // |/====[OURO]====\|
     10
   ),

@@ -5,7 +5,6 @@ const player = {
 
 let inimigoAtual;
 let numeroInimigoAtual = 0;
-let explosao = document.getElementById("explosao")
 
 function gerarInimigo() {
   // |/=====[NÃO REPETIR INIMIGOS]=====\|
@@ -28,6 +27,8 @@ function gerarInimigo() {
 
 let numeroFalaAtual;
 inimigoImage.addEventListener("click", function (e) {
+  if (inimigoAtual.vidaAtual <= 0) { return } // pra nao sobreescrever cliques quando clica dps da vida estar negativa (na animacao de explosao)
+
   console.log(inimigoAtual.ouro);
   // |/=====[GERAR FALA]=====\|
   let numeroFala = Math.trunc(Math.random() * inimigoAtual.falas.length);
@@ -38,20 +39,56 @@ inimigoImage.addEventListener("click", function (e) {
   dialogueText.textContent = inimigoAtual.falas[numeroFalaAtual];
 
   // |/=====[DAR DANO]=====\|
-  inimigoAtual.vidaAtual -= player.dano;
+  if (inimigoAtual.vidaAtual-player.dano >= 0) {
+    inimigoAtual.vidaAtual -= player.dano;
+  } else {
+    inimigoAtual.vidaAtual = 0;
+  }
   healthText.textContent = `${inimigoAtual.vidaAtual}/${inimigoAtual.vida}`;
+
+  // |/=====[ ANIMACAO ATAQUE ]=====\|
+  const slash = document.createElement("div");
+  if (inimigoAtual.nome === "pexe") {
+    slash.classList.add("blood-slash");
+  } else {
+    slash.classList.add("normal-slash");
+  }
+
+  Object.assign(slash.style, {
+    top: e.pageY-100 + 'px',
+    left: e.pageX-100 + 'px'
+  });
+
+  document.body.appendChild(slash);
+
+  setTimeout(
+    () => {
+      document.body.removeChild(slash);
+    },
+    500
+  )
 
   // |/=====[MATAR INIMIGO]=====\|
   if (inimigoAtual.vidaAtual <= 0) {
 
     // |/====[CHAMA EXPLOSAO]=====\/
     explosao.classList = "explosao explodindo";
+
+    // chama sangue pro peixe
+    if (inimigoAtual.nome == "pexe") {
+      explosao.src = "./imagens/bloodsplatter.gif"
+    }
     setTimeout(
       () => {
         explosao.classList = "explosao parada";
+
+        // volta a normalidade se for peixe
+        if (inimigoAtual.nome == "pexe") {
+          explosao.src = "./imagens/explosao.gif"
+        }
         gerarInimigo();
       },
-      2000
+      1000
     );
     // |/=====[GANHAR COISINHAS]=====\|]
     player.gold += inimigoAtual.gold;
