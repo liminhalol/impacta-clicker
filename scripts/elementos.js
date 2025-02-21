@@ -4,7 +4,7 @@ const healthText = document.querySelector(".health");
 const descriptionText = document.querySelector(".about");
 
 // |/====[ENEMY AREA]====\|
-const inimigoImage = document.querySelector(".inimigo");
+const enemyImage = document.querySelector(".inimigo");
 const dialogueText = document.querySelector(".dialogue");
 const explosao = document.getElementById("explosao")
 

@@ -1,54 +1,53 @@
 const player = {
-  dano: 4,
+  damage: 4,
   gold: 0,
 };
 
-let inimigoAtual;
-let numeroInimigoAtual = 0;
+let currentEnemy;
+let currentEnemyNumber = 0;
 
-function gerarInimigo() {
+
+function createEnemy() {
   // |/=====[NÃO REPETIR INIMIGOS]=====\|
-  let numero = Math.trunc(Math.random() * inimigos.length);
-  while (numero === numeroInimigoAtual) {
-    numero = Math.trunc(Math.random() * inimigos.length);
+  let randomEnemyNumber = Math.trunc(Math.random() * enemies.length);
+  while (randomEnemyNumber === currentEnemyNumber) {
+    randomEnemyNumber = Math.trunc(Math.random() * enemies.length);
   }
-  numeroInimigoAtual = numero;
+  currentEnemyNumber = randomEnemyNumber;
   // |/=====[GERAR INIMIGO]=====\|
-  inimigoAtual = { ...inimigos[numeroInimigoAtual] };
-  inimigoAtual.__proto__ = inimigos[numeroInimigoAtual].__proto__;
+  currentEnemy = { ...enemies[currentEnemyNumber] };
+  currentEnemy.__proto__ = enemies[currentEnemyNumber].__proto__;
 
   // |/=====[TEXTOS]=====\|
-  nameText.textContent = inimigoAtual.nome;
-  descriptionText.textContent = inimigoAtual.descrição;
-  healthText.textContent = `${inimigoAtual.vida}/${inimigoAtual.vida}`;
-  inimigoImage.src = inimigoAtual.imagem;
-  dialogueText.textContent = inimigoAtual.falas[0];
+  nameText.textContent = currentEnemy.name;
+  descriptionText.textContent = currentEnemy.description;
+  healthText.textContent = `${currentEnemy.health}/${currentEnemy.health}`;
+  enemyImage.src = currentEnemy.image;
+  dialogueText.textContent = currentEnemy.lines[0];
 }
 
-let numeroFalaAtual;
-inimigoImage.addEventListener("click", function (e) {
-  if (inimigoAtual.vidaAtual <= 0) { return } // pra nao sobreescrever cliques quando clica dps da vida estar negativa (na animacao de explosao)
-
-  console.log(inimigoAtual.ouro);
+let currentLineNumber;
+enemyImage.addEventListener("click", function (e) {
+  if (currentEnemy.currentHealth <= 0) { return } // pra nao sobreescrever cliques quando clica dps da health estar negativa (na animacao de explosao)
   // |/=====[GERAR FALA]=====\|
-  let numeroFala = Math.trunc(Math.random() * inimigoAtual.falas.length);
-  while (numeroFala === numeroFalaAtual) {
-    numeroFala = Math.trunc(Math.random() * inimigoAtual.falas.length);
+  let randomLineNumber = Math.trunc(Math.random() * currentEnemy.lines.length);
+  while (randomLineNumber === currentLineNumber) {
+    randomLineNumber = Math.trunc(Math.random() * currentEnemy.lines.length);
   }
-  numeroFalaAtual = numeroFala;
-  dialogueText.textContent = inimigoAtual.falas[numeroFalaAtual];
+  currentLineNumber = randomLineNumber;
+  dialogueText.textContent = currentEnemy.lines[currentLineNumber];
 
   // |/=====[DAR DANO]=====\|
-  if (inimigoAtual.vidaAtual-player.dano >= 0) {
-    inimigoAtual.vidaAtual -= player.dano;
+  if (currentEnemy.currentHealth-player.damage >= 0) {
+    currentEnemy.currentHealth -= player.damage;
   } else {
-    inimigoAtual.vidaAtual = 0;
+    currentEnemy.currentHealth = 0;
   }
-  healthText.textContent = `${inimigoAtual.vidaAtual}/${inimigoAtual.vida}`;
+  healthText.textContent = `${currentEnemy.currentHealth}/${currentEnemy.health}`;
 
   // |/=====[ ANIMACAO ATAQUE ]=====\|
   const slash = document.createElement("div");
-  if (inimigoAtual.nome === "pexe") {
+  if (currentEnemy.name === "pexe") {
     slash.classList.add("blood-slash");
   } else {
     slash.classList.add("normal-slash");
@@ -69,13 +68,13 @@ inimigoImage.addEventListener("click", function (e) {
   )
 
   // |/=====[MATAR INIMIGO]=====\|
-  if (inimigoAtual.vidaAtual <= 0) {
+  if (currentEnemy.currentHealth <= 0) {
 
     // |/====[CHAMA EXPLOSAO]=====\/
     explosao.classList = "explosao explodindo";
 
     // chama sangue pro peixe
-    if (inimigoAtual.nome == "pexe") {
+    if (currentEnemy.name == "pexe") {
       explosao.src = "./imagens/bloodsplatter.gif"
     }
     setTimeout(
@@ -83,18 +82,18 @@ inimigoImage.addEventListener("click", function (e) {
         explosao.classList = "explosao parada";
 
         // volta a normalidade se for peixe
-        if (inimigoAtual.nome == "pexe") {
+        if (currentEnemy.name == "pexe") {
           explosao.src = "./imagens/explosao.gif"
         }
-        gerarInimigo();
+        createEnemy();
       },
       1000
     );
     // |/=====[GANHAR COISINHAS]=====\|]
-    player.gold += inimigoAtual.gold;
+    player.gold += currentEnemy.gold;
     goldText.textContent = player.gold;
 
   }
 });
 
-gerarInimigo();
+createEnemy();

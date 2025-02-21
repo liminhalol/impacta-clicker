@@ -1,21 +1,21 @@
-class Inimigo {
-  constructor(nome, vida, descrição, falas, imagem, ouro) {
-    (this.nome = nome),
-      (this.vida = vida),
-      (this.vidaAtual = vida),
-      (this.descrição = descrição),
-      (this.falas = falas),
-      (this.imagem = imagem),
-      (this.ouro = ouro);
+class Enemy {
+  constructor(name, health, description, lines, image, gold) {
+    (this.name = name),
+      (this.health = health),
+      (this.currentHealth = health),
+      (this.description = description),
+      (this.lines = lines),
+      (this.image = image),
+      (this.gold_ = gold);
   }
 
   get gold() {
-    return Math.trunc(this.ouro * (0.5 + Math.random() * 0.5));
+    return Math.trunc(this.gold_ * (0.5 + Math.random() * 0.5));
   }
 }
 
-const inimigos = [
-  new Inimigo(
+const enemies = [
+  new Enemy(
     // |/====[NOME]====\|
     "joao",
     // |/====[VIDA]====\|
@@ -34,7 +34,7 @@ const inimigos = [
     // |/====[OURO]====\|
     10
   ),
-  new Inimigo(
+  new Enemy(
     // |/====[NOME]====\|
     "caio polonio",
     // |/====[VIDA]====\|
@@ -52,7 +52,7 @@ const inimigos = [
     // |/====[OURO]====\|
     10
   ),
-  new Inimigo(
+  new Enemy(
     // |/====[NOME]====\|
     "guigas autopessas 3000",
     // |/====[VIDA]====\|
@@ -66,7 +66,7 @@ const inimigos = [
     // |/====[OURO]====\|
     10
   ),
-  new Inimigo(
+  new Enemy(
     // |/====[NOME]====\|
     "pexe",
     // |/====[VIDA]====\|
@@ -74,13 +74,13 @@ const inimigos = [
     // |/====[DESCRIÇÃO]====\|
     "guigao conseguiu um meca, e agora????",
     // |/====[FALAS]====\|
-    ["chama!", "so pra rir", "essa e boa 😜", "bo joga baldurs gate mano"],
+    ["glub glub!!!", "glub blub....", "","*sons de peixe diversos*", "o captalismo e uma praga pra sociedade moderna"],
     // |/====[IMAGEM]====\|
     "./imagens/pexe.png",
     // |/====[OURO]====\|
     10
   ),
-  new Inimigo(
+  new Enemy(
     // |/====[NOME]====\|
     "luiz",
     // |/====[VIDA]====\|
@@ -88,7 +88,7 @@ const inimigos = [
     // |/====[DESCRIÇÃO]====\|
     "guigao conseguiu um meca, e agora????",
     // |/====[FALAS]====\|
-    ["chama!", "so pra rir", "essa e boa 😜", "bo joga baldurs gate mano"],
+    ["seja castigado, criminoso!", "sera que esse site roda bad apple?", "linux supremacia", "prefiria jogar touhou"],
     // |/====[IMAGEM]====\|
     "./imagens/luiz.png",
     // |/====[OURO]====\|

@@ -79,13 +79,15 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 100px;
+  margin-top: 58px;
+  overflow: hidden;
 }
 
 /* /|========[TITLE]========|\ */
 .heading {
   font-size: 10px;
-  margin-bottom: 36px;
+  margin-top: 42px;
+  /* margin-bottom: 36px; */
 }
 
 /* /|========[ENEMY INFO]========|\ */
