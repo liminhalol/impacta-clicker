@@ -72,9 +72,14 @@ const enemies = [
     // |/====[VIDA]====\|
     50,
     // |/====[DESCRIÇÃO]====\|
-    "guigao conseguiu um meca, e agora????",
+    "blub blub glub >:( (prepare-se para sua perdição)",
     // |/====[FALAS]====\|
-    ["glub glub!!!", "glub blub....", "","*sons de peixe diversos*", "o captalismo e uma praga pra sociedade moderna"],
+    [
+      "glub glub!!!",
+      "glub blub....",
+      "*sons de peixe diversos*",
+      "o captalismo e uma praga pra sociedade moderna",
+    ],
     // |/====[IMAGEM]====\|
     "./imagens/pexe.png",
     // |/====[OURO]====\|
@@ -88,7 +93,13 @@ const enemies = [
     // |/====[DESCRIÇÃO]====\|
     "guigao conseguiu um meca, e agora????",
     // |/====[FALAS]====\|
-    ["seja castigado, criminoso!", "sera que esse site roda bad apple?", "linux supremacia", "prefiria jogar touhou"],
+    [
+      "seja castigado, criminoso!",
+      "sera que esse site roda bad apple?",
+      "linux supremacia",
+      "prefiria jogar touhou",
+      "eu nao tenho uma versão em png :c",
+    ],
     // |/====[IMAGEM]====\|
     "./imagens/luiz.png",
     // |/====[OURO]====\|

@@ -22,11 +22,10 @@
 body {
   height: 100vh;
   position: relative;
+  font-family: "DPComic", sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  font-family: "DPComic", sans-serif;
 }
 
 /* /|========[REUSABLE]========|\ */
@@ -43,6 +42,17 @@ body {
   padding: 8px 16px;
 }
 
+.flex-center--column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.text--center {
+  text-align: center;
+}
+
 /* /|========[START SCREEN]========|\ */
 .start-screen {
   position: absolute;
@@ -51,10 +61,6 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   font-size: 12px;
   background-color: #fff;
 }
@@ -68,26 +74,39 @@ body {
 }
 
 .hidden {
-  opacity: 0;
-  pointer-events: none;
+  display: none;
 }
 
 /* /|========[GAME CONTAINER]========|\ */
 .game {
   position: relative;
+  width: 550px;
+  aspect-ratio: 1/1;
+}
+
+.screen {
+  margin-bottom: 70px;
+}
+
+.enemy-container {
+  position: relative;
+}
+
+.store-container {
+  border: 1px solid rgba(0, 0, 0, 0);
+}
+
+.stats {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 58px;
-  overflow: hidden;
+  justify-content: space-between;
+  font-family: monospace;
 }
 
 /* /|========[TITLE]========|\ */
 .heading {
   font-size: 10px;
   margin-top: 42px;
-  /* margin-bottom: 36px; */
+  margin-bottom: 48px;
 }
 
 /* /|========[ENEMY INFO]========|\ */
@@ -132,7 +151,7 @@ body {
   transition: transform 0.3s;
 }
 
-.inimigo:active{
+.inimigo:active {
   transform: scale(1.1);
 }
 
@@ -148,54 +167,60 @@ body {
 
 .dialogue {
   position: absolute;
-  right: -100px;
+  right: -200px;
+  top: 150px;
   width: 100px;
   font-size: 22px;
   text-align: right;
 }
 
-/* /|========[SLASH ANIMATIONS]========|\ */
-.blood-slash {
+/* /|========[SLASH ANIMATION]========|\ */
+.attack-animation {
   position: absolute;
-  width: 200px;
+  z-index: 999;
   height: 200px;
-  background-image: url("./imagens/blood-slash.gif");
-  background-size: cover;
+  aspect-ratio: 1/1;
   pointer-events: none;
-  z-index: 999;
-}
-
-.normal-slash {
-  position: absolute;
-  width: 150px;
-  height: 150px;
-  background-image: url("./imagens/normal-slash.gif");
-  background-size: cover;
-  pointer-events: none;
-  z-index: 999;
-}
-
-
-/* /|========[ATTACK BUTTON]========|\ */
-.attackBtn {
-  color: #fff;
-  background-color: rgba(0, 0, 0, 0.95);
-  margin-bottom: 12px;
-}
-
-.attackBtn:hover {
-  transform: scale(0.95);
-}
-
-.attackBtn:active {
-  transform: scale(1.4);
 }
 
 /* /|========[CHANGE THEME BUTTON]========|\ */
 .changeThemeBtn {
   position: absolute;
-  top: -60px;
-  right: -60px;
+  top: 60px;
+  right: 60px;
   font-size: 18px;
   padding: 3px 6px;
+}
+
+/* /|========[STORE]========|\ */
+.shop {
+  margin-top: 24px;
+}
+.shop-weapons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 12px;
+  align-items: center;
+  justify-items: center;
+}
+.shop-weapon {
+  width: 50px;
+  aspect-ratio: 1/1;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.shop-weapon--active {
+  background-color: #000;
+  color: #fff;
+}
+
+.changeScreenBtn {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 18px;
 }
