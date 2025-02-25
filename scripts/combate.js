@@ -1,6 +1,21 @@
 let currentEnemy;
 let currentEnemyNumber = 0;
 
+function dealDamage(damage) {
+  if (currentEnemy.currentHealth - damage >= 0) {
+    currentEnemy.currentHealth -= damage;
+  } else {
+    currentEnemy.currentHealth = 0;
+  }
+  healthText.textContent = `${currentEnemy.currentHealth}/${currentEnemy.health}`;
+
+  // |/=====[MATAR INIMIGO]=====\|
+  if (currentEnemy.currentHealth === 0) {
+    // explosionAnimation();
+    createEnemy();
+  }
+}
+
 function createEnemy() {
   // |/=====[NÃO REPETIR INIMIGOS]=====\|
   let randomEnemyNumber = Math.trunc(Math.random() * enemies.length);
@@ -25,7 +40,7 @@ let currentLineNumber;
 enemyImage.addEventListener("click", function (e) {
   if (currentEnemy.currentHealth <= 0) {
     return;
-  } // pra nao sobreescrever cliques quando clica dps da health estar negativa (na animacao de explosao)
+  } // |/=====[ NÃO DAR VIDA NEGATIVA NA ANIMAÇÃO DA EXPLOSÃO ]=====\|
 
   damage = player.weapon.damage;
 
@@ -36,14 +51,6 @@ enemyImage.addEventListener("click", function (e) {
   }
   currentLineNumber = randomLineNumber;
   dialogueText.textContent = currentEnemy.lines[currentLineNumber];
-
-  // |/=====[ DAR DANO ]=====\|
-  if (currentEnemy.currentHealth - damage >= 0) {
-    currentEnemy.currentHealth -= damage;
-  } else {
-    currentEnemy.currentHealth = 0;
-  }
-  healthText.textContent = `${currentEnemy.currentHealth}/${currentEnemy.health}`;
 
   // |/=====[ ANIMACAO DE ATAQUE ]=====\|
   const slash = document.createElement("img");
@@ -65,28 +72,8 @@ enemyImage.addEventListener("click", function (e) {
     document.body.removeChild(slash);
   }, 500);
 
-  // |/=====[MATAR INIMIGO]=====\|
-  if (currentEnemy.currentHealth <= 0) {
-    // |/====[CHAMA EXPLOSAO]=====\/
-    explosao.classList = "explosao explodindo";
-
-    // chama sangue pro peixe
-    if (currentEnemy.name == "pexe") {
-      explosao.src = "./imagens/bloodsplatter.gif";
-    }
-    setTimeout(() => {
-      explosao.classList = "explosao parada";
-
-      // volta a normalidade se for peixe
-      if (currentEnemy.name == "pexe") {
-        explosao.src = "./imagens/explosao.gif";
-      }
-      createEnemy();
-    }, 1000);
-    // |/=====[GANHAR COISINHAS]=====\|]
-    // player.gold += currentEnemy.gold;
-    // goldText.textContent = player.gold;
-  }
+  // |/=====[ DAR DANO ]=====\|
+  dealDamage(damage);
 });
 
 createEnemy();

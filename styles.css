@@ -155,7 +155,10 @@ body {
   transform: scale(1.1);
 }
 
+/* /|========[ EXPLOSION ]========|\ */
+
 .explosao.explodindo {
+  pointer-events: none;
   display: block;
   z-index: 99;
 }
@@ -222,5 +225,21 @@ body {
   position: absolute;
   left: 0;
   top: 0;
+  font-size: 18px;
+}
+
+/* /|========[STORE]========|\ */
+
+.lojinha {
+  position: absolute;
+  left: -200px;
+  top: 150px;
+  width: 100px;
+  font-size: 22px;
+  text-align: left;
+}
+
+.btn--buy-cursor {
+  padding: 6px 12px;
   font-size: 18px;
 }

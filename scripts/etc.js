@@ -15,3 +15,42 @@ changeScreenBtn.addEventListener("click", function (e) {
   changeScreenBtn.textContent = loja ? "loja" : "jogo";
   loja = !loja;
 });
+
+function explosionAnimation() {
+  // |/====[CHAMA EXPLOSAO]=====\/
+  explosao.classList = "explosao explodindo";
+
+  // |/=====[ MUDA A EXPLOSÃO PRO PEIXE ]=====\|
+  if (currentEnemy.name == "pexe") {
+    explosao.src = "./imagens/bloodsplatter.gif";
+    // |/=====[ REMOVER A EXPLOSÃO ]=====\|
+    setTimeout(() => {
+      explosao.classList = "explosao parada";
+
+      // // |/=====[ VOLTAR PRA EXPLOSÃO CASO PEIXE ]=====\|
+      if (currentEnemy.name == "pexe") {
+        explosao.src = "./imagens/explosao.gif";
+      }
+    }, 1000);
+  }
+}
+
+const btnBuyCursor = document.querySelector(".btn--buy-cursor");
+const cursorText = document.querySelector(".store-cursors");
+
+const cursors = {
+  amount: 0,
+  damage: 0,
+  stack: [],
+
+  buyCursor() {
+    this.amount++;
+    cursorText.textContent = this.amount;
+
+    const cursorInterval = setInterval(function () {
+      dealDamage(this.damage);
+    }, 2000);
+  },
+};
+
+btnBuyCursor.addEventListener("click", cursors.buyCursor.bind(cursors));
