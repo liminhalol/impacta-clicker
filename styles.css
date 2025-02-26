@@ -232,15 +232,26 @@ body {
 
 .lojinha {
   position: absolute;
-  left: -200px;
+  left: -350px;
   top: 150px;
-  width: 100px;
+  width: 150px;
   font-size: 22px;
   text-align: left;
   font-family: monospace;
 }
 
-.btn--buy-cursor {
+.btn--store {
   padding: 6px 12px;
   font-size: 18px;
+  margin-bottom: 24px;
+}
+
+.ball {
+  width: 35px;
+  aspect-ratio: 1/1;
+  background-color: rgb(74, 228, 202);
+  border-radius: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }

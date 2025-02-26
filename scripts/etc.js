@@ -3,6 +3,13 @@
 //   document.querySelector(".start-screen").classList.add("hidden");
 // });
 
+function randInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+function randFloat(min, max) {
+  return Math.random() * (max - min + 1) + min;
+}
+
 // TUDO ISSO AQUI É TEMPORARIO VIU FAZ ALGO DECENTE DPS
 const changeScreenBtn = document.querySelector(".changeScreenBtn");
 const enemyContainer = document.querySelector(".enemy-container");
@@ -51,33 +58,31 @@ const cursors = {
   stack: [],
 
   buyCursor() {
-    if(player.gold >= this.currentCost){
+    if (player.gold >= this.currentCost) {
       // |/=====[ UPDATE COST ]=====\|
-      player.gold -= this.currentCost
-      goldText.textContent = player.gold
-      this.currentCost = Math.round(this.currentCost * 1.15)
-      btnBuyCursor.textContent = `${this.currentCost}$`
+      player.gold -= this.currentCost;
+      goldText.textContent = player.gold;
+      this.currentCost = Math.round(this.currentCost * 1.15);
+      btnBuyCursor.textContent = `${this.currentCost}$`;
 
       // |/=====[ UPDATE AMOUNT ]=====\|
       this.amount++;
       cursorText.textContent = this.amount;
-  
+
       // |/=====[ CREATE CURSOR ]=====\|
-      const cursorInterval = this.stack.push(setInterval(( ) => {
-        dealDamage(this.damage);
-      }, 2000))
+      const cursorInterval = this.stack.push(
+        setInterval(() => {
+          dealDamage(this.damage);
+        }, 2000)
+      );
     }
-    
   },
 
-  removeAllCursors(){
-    for(cursor of this.stack){
-      clearInterval(x)
+  removeAllCursors() {
+    for (cursor of this.stack) {
+      clearInterval(x);
     }
-  }
+  },
 };
 
-
-
 btnBuyCursor.addEventListener("click", cursors.buyCursor.bind(cursors));
-// |/=====[ COMPRAR CURSORES ]=====\|
