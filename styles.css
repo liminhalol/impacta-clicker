@@ -237,6 +237,7 @@ body {
   width: 100px;
   font-size: 22px;
   text-align: left;
+  font-family: monospace;
 }
 
 .btn--buy-cursor {

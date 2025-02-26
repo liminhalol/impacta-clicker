@@ -8,6 +8,7 @@ const changeScreenBtn = document.querySelector(".changeScreenBtn");
 const enemyContainer = document.querySelector(".enemy-container");
 const storeContainer = document.querySelector(".store-container");
 
+// |/=====[ LOJA ]=====\|
 let loja = false;
 changeScreenBtn.addEventListener("click", function (e) {
   storeContainer.classList.toggle("hidden");
@@ -15,7 +16,9 @@ changeScreenBtn.addEventListener("click", function (e) {
   changeScreenBtn.textContent = loja ? "loja" : "jogo";
   loja = !loja;
 });
+// |/=====[ LOJA ]=====\|
 
+// |/=====[ ANIMAÇÃO DE EXPLOSÃO ]=====\|
 function explosionAnimation() {
   // |/====[CHAMA EXPLOSAO]=====\/
   explosao.classList = "explosao explodindo";
@@ -34,23 +37,47 @@ function explosionAnimation() {
     }, 1000);
   }
 }
+// |/=====[ ANIMAÇÃO DE EXPLOSÃO ]=====\|
 
+// |/=====[ COMPRAR CURSORES ]=====\|
 const btnBuyCursor = document.querySelector(".btn--buy-cursor");
 const cursorText = document.querySelector(".store-cursors");
 
 const cursors = {
   amount: 0,
-  damage: 0,
+  baseCost: 15,
+  currentCost: 15,
+  damage: 1,
   stack: [],
 
   buyCursor() {
-    this.amount++;
-    cursorText.textContent = this.amount;
+    if(player.gold >= this.currentCost){
+      // |/=====[ UPDATE COST ]=====\|
+      player.gold -= this.currentCost
+      goldText.textContent = player.gold
+      this.currentCost = Math.round(this.currentCost * 1.15)
+      btnBuyCursor.textContent = `${this.currentCost}$`
 
-    const cursorInterval = setInterval(function () {
-      dealDamage(this.damage);
-    }, 2000);
+      // |/=====[ UPDATE AMOUNT ]=====\|
+      this.amount++;
+      cursorText.textContent = this.amount;
+  
+      // |/=====[ CREATE CURSOR ]=====\|
+      const cursorInterval = this.stack.push(setInterval(( ) => {
+        dealDamage(this.damage);
+      }, 2000))
+    }
+    
   },
+
+  removeAllCursors(){
+    for(cursor of this.stack){
+      clearInterval(x)
+    }
+  }
 };
 
+
+
 btnBuyCursor.addEventListener("click", cursors.buyCursor.bind(cursors));
+// |/=====[ COMPRAR CURSORES ]=====\|

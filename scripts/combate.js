@@ -1,6 +1,3 @@
-let currentEnemy;
-let currentEnemyNumber = 0;
-
 function dealDamage(damage) {
   if (currentEnemy.currentHealth - damage >= 0) {
     currentEnemy.currentHealth -= damage;
@@ -9,26 +6,33 @@ function dealDamage(damage) {
   }
   healthText.textContent = `${currentEnemy.currentHealth}/${currentEnemy.health}`;
 
-  // |/=====[MATAR INIMIGO]=====\|
-  if (currentEnemy.currentHealth === 0) {
+  // |/=====[ MATAR INIMIGO ]=====\|
+  if (currentEnemy.currentHealth <= 0) {
     // explosionAnimation();
     createEnemy();
+
+    // |/=====[ GANHAR LOOT ]=====\|
+    player.gold += currentEnemy.gold
+    goldText.textContent = player.gold
   }
 }
 
+let currentEnemy;
+let currentEnemyNumber = 0;
+
 function createEnemy() {
-  // |/=====[NÃO REPETIR INIMIGOS]=====\|
+  // |/=====[ NÃO REPETIR INIMIGOS ]=====\|
   let randomEnemyNumber = Math.trunc(Math.random() * enemies.length);
   while (randomEnemyNumber === currentEnemyNumber) {
     randomEnemyNumber = Math.trunc(Math.random() * enemies.length);
   }
   currentEnemyNumber = randomEnemyNumber;
 
-  // |/=====[GERAR INIMIGO]=====\|
+  // |/=====[ GERAR INIMIGO ]=====\|
   currentEnemy = { ...enemies[currentEnemyNumber] };
   currentEnemy.__proto__ = enemies[currentEnemyNumber].__proto__;
 
-  // |/=====[TEXTOS]=====\|
+  // |/=====[ TEXTOS ]=====\|
   nameText.textContent = currentEnemy.name;
   descriptionText.textContent = currentEnemy.description;
   healthText.textContent = `${currentEnemy.health}/${currentEnemy.health}`;
@@ -38,9 +42,10 @@ function createEnemy() {
 
 let currentLineNumber;
 enemyImage.addEventListener("click", function (e) {
+  // |/=====[ NÃO DAR VIDA NEGATIVA NA ANIMAÇÃO DA EXPLOSÃO ]=====\|
   if (currentEnemy.currentHealth <= 0) {
     return;
-  } // |/=====[ NÃO DAR VIDA NEGATIVA NA ANIMAÇÃO DA EXPLOSÃO ]=====\|
+  } 
 
   damage = player.weapon.damage;
 
@@ -52,7 +57,7 @@ enemyImage.addEventListener("click", function (e) {
   currentLineNumber = randomLineNumber;
   dialogueText.textContent = currentEnemy.lines[currentLineNumber];
 
-  // |/=====[ ANIMACAO DE ATAQUE ]=====\|
+  // |/=====[ ANIMAÇÃO DE ATAQUE ]=====\|
   const slash = document.createElement("img");
   slash.classList.add("attack-animation");
 

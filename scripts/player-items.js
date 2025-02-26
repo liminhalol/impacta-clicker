@@ -29,7 +29,7 @@ const weapons = {
 // |/====[PLAYER]====\|
 const player = {
   gold: 0,
-  weapon: weapons.faca,
+  weapon: weapons.magia,
 };
 
 // |/====[CRIAR HTML DAS ARMAS]====\|

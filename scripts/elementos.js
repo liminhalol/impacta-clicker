@@ -14,5 +14,5 @@ const changeThemeBtn = document.querySelector(".changeThemeBtn");
 const startGameBtn = document.querySelector(".startGameBtn");
 
 // |/====[STATS]====\|
-const goldText = document.querySelector(".gold");
-const expText = document.querySelector(".exp");
+const goldText = document.querySelector(".stats-gold");
+const expText = document.querySelector(".stats-exp");
